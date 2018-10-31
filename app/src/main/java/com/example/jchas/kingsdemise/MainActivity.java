@@ -30,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
         mediaPlayer.start();
 
+        credits.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+            }
+        });
+
+
     }
 
     public void credits(View view) {
