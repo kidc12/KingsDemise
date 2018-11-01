@@ -2,10 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".MainActivity"
-    android:background="@color/black">
+    android:background="@drawable/sunset">
 
     <TextView
         android:id="@+id/headline"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:text="KiNgS DeMiSe"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="100sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,10 +22,10 @@
     <TextView
         android:id="@+id/start"
         android:text="{start}"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:onClick="start"
         android:clickable="true"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="50dp"
@@ -36,10 +36,10 @@
     <TextView
         android:id="@+id/settings"
         android:text="&gt;settings&gt;"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:onClick="settings"
         android:clickable="true"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="140dp"
@@ -51,10 +51,10 @@
     <TextView
         android:id="@+id/credits"
         android:text="&gt;credits&gt;"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:onClick="credits"
         android:clickable="true"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="140dp"

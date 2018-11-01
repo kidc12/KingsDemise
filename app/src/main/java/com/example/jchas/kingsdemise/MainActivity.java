@@ -5,6 +5,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         start.setTypeface(font2);
         settings.setTypeface(font2);
         credits.setTypeface(font2);
+
+
+        Animation hover = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.super_hover);
+
+
+        start.startAnimation(hover);
 
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
         mediaPlayer.start();
