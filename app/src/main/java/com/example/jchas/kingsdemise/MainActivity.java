@@ -1,5 +1,6 @@
 package com.example.jchas.kingsdemise;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         credits.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Code here executes on main thread after user presses button
+                if (v.getId() == R.id.start) {
+                    start(v);
+                } else if (v.getId() == R.id.settings) {
+                    settings(v);
+                } else if (v.getId() == R.id.credits) {
+                    credits(v);
+                }
             }
         });
 
@@ -49,12 +58,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void credits(View view) {
-
+        intent = new Intent(MainActivity.this, CreditActivity.class);
+        startActivity(intent);
     }
 
     public void settings(View view) {
+        intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+
     }
 
     public void start(View view) {
+        intent = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(intent);
     }
 }
