@@ -9,7 +9,7 @@ This is a RPG video game in progress. After your father is killed by the King yo
 ____________________
 ## Gameplay Todo List
 
-* resulting in three demo endings
+* resulting in three LOCATION BASED demo endings (GPS requirement)
 
 ____________________
 ## Art Todo List
