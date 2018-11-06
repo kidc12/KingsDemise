@@ -17,3 +17,19 @@ ____________________
 * character sprites 
 * profiles? 
 
+## School Todo List
+### Grading:
+* Icon for the app 5
+* Model View Controller architecture 10
+* All data read from and written to Model 10
+* Multiple views 5
+* Toast 5
+* Passing data back and forth between views 10
+* Persistent data (read and write) 10
+* New layout manager or GUI component 10
+* Transitions 5
+* Uses an app or phone hardware or Google services 10
+* Meaningful app with nice functionality 10
+* Has advertising (fake ad from Google) 10
+* Extra credit: Crowd sourced app (storing data on server; writing/reading) 
+
