@@ -30,6 +30,6 @@ ____________________
 * Transitions 5
 * Uses an app or phone hardware or Google services 10
 * Meaningful app with nice functionality 10
-* Has advertising (fake ad from Google) 10
-* Extra credit: Crowd sourced app (storing data on server; writing/reading) 
+* Has advertising (fake ad from Google) 10 ----> we can have loading screens inbetween screens that displays a tip, and add, and a walking character for a certain amount of seconds. 
+* Extra credit: Crowd sourced app (storing data on server; writing/reading) ----> once you finish the game you store their choice to the server and then show the player at the end of the game what portion of players choose the same path
 
