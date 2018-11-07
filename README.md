@@ -1,6 +1,12 @@
 # KingsDemise
-App Project
+Android App Project
 
+## Project Proposal 
+
+Javon, Christina, and Peter
+Our app will be a RPG, or role playing game, where the player plays as a farmer who has just lost their father. You don't know how or why he's missing but through your jounry you will soon find clues that may lead to him or someone else. To do this, the player will need to complete set of mini games and choose their paths wisely in hopes of finding their lost father. 
+
+After the first or second clue the player should then be informed that their father was killed instead of kidnapped. 
 This is a RPG video game in progress. After your father is killed by the King you decided to get revenge on him by stealing the throne. In this game you play as a vengful character trying to become King of a natiaon by any means you deem necessary.
 
 ## Todo List
