@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         TextView settings = findViewById(R.id.settings);
         TextView credits = findViewById(R.id.credits);
 
-        Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "Sunset Boulevard.otf");
         Typeface font2 = Typeface.createFromAsset(getAssets(), "pixelflag.ttf");
 
         headline.setTypeface(font1);
