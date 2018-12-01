@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         TextView settings = findViewById(R.id.settings);
         TextView credits = findViewById(R.id.credits);
 
-        Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
+        //Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
         Typeface font2 = Typeface.createFromAsset(getAssets(), "pixelflag.ttf");
 
-        headline.setTypeface(font1);
+        headline.setTypeface(font2);
         start.setTypeface(font2);
         settings.setTypeface(font2);
         credits.setTypeface(font2);
@@ -39,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         start.startAnimation(hover);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-        mediaPlayer.start();
+        //this causes the app to crash and slow down
+        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        //mediaPlayer.start();
 
+        /**
         credits.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (v.getId() == R.id.start) {
@@ -53,16 +55,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+         **/
 
 
     }
 
     public void credits(View view) {
+        //TODO: UPDATE THIS
         intent = new Intent(MainActivity.this, CreditActivity.class);
         startActivity(intent);
     }
 
     public void settings(View view) {
+        //TODO: UPDATE THIS
         intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
 

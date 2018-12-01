@@ -5,14 +5,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/sunset">
+    android:background="@drawable/titlescreen">
 
     <TextView
         android:id="@+id/headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="KiNgS DeMiSe"
+        android:text="Kings Demise"
         android:textColor="@color/black"
         android:textSize="100sp"
         app:layout_constraintLeft_toLeftOf="parent"
