@@ -20,17 +20,7 @@ import java.util.List;
 
 public class PrologueActivity extends  AppCompatActivity{
 
-    private String[] dialogueKing;
-    private int countKing;
-
-    private String[] dialogueFarm;
-    private int countFarm;
-
     private String userName;
-
-    private String[] dialogueKing2;
-    private int countKing2;
-
 
     private String[] dialogue;
     private int count;
@@ -59,7 +49,8 @@ public class PrologueActivity extends  AppCompatActivity{
                 "King: And you look like your father too. ▸",
                 userName + ": You horrible king!▸",
                 userName + ": You will pay for this!▸",
-                "King: Tsk. Gaurds! Finish what I have started! ▸"
+                "King: Tsk. Gaurds! Finish what I have started! ▸",
+                ""
 
         };
     }
@@ -101,7 +92,8 @@ public class PrologueActivity extends  AppCompatActivity{
 
 
         if(count == dialogue.length){
-            //start fight
+            Intent intent = new Intent(this, CombatActivity.class);
+            startActivity(intent);
 
         }
 
@@ -135,7 +127,8 @@ public class PrologueActivity extends  AppCompatActivity{
                 "King: And you look like your father too. ▸",
                 userName + ": You horrible king!▸",
                 userName + ": You will pay for this!▸",
-                "King: Tsk. Gaurds! Finish what I have started! ▸"
+                "King: Tsk. Gaurds! Finish what I have started! ▸",
+                ""
         };
 
     }

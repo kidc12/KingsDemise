@@ -39,6 +39,9 @@
         <activity
             android:name=".PrologueActivity"
             android:screenOrientation="landscape" />
+            <activity
+                android:name=".CombatActivity"
+                android:screenOrientation="landscape" />
 
     </application>
 

@@ -9,6 +9,10 @@ public class Account {
     private String username;
     private int ending;
 
+    private int userHP;
+    private int opHP;
+
+
     public Account(){
 
         //the username will also be our persistent data
@@ -20,9 +24,14 @@ public class Account {
         return username;
     }
 
+    //good ending bad ending?
     public int getEnding(){
         return ending;
     }
 
+
+    public void gameOver(){
+        //reset HP
+    }
 
 }
