@@ -2,7 +2,6 @@ package com.example.jchas.kingsdemise;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
-        intent = new Intent(MainActivity.this, GameActivity.class);
+        intent = new Intent(MainActivity.this, PrologueActivity.class);
         startActivity(intent);
     }
 }
