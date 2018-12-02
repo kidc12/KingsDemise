@@ -28,39 +28,51 @@ public class PrologueActivity extends  AppCompatActivity{
 
     private String userName;
 
+    private String[] dialogueKing2;
+    private int countKing2;
+
+
+    private String[] dialogue;
+    private int count;
+
+
+    private boolean ready;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue);
-        countKing = 0;
-        countFarm = 0;
-        dialogueKing = new String[] {"Yet another run down farm... ▸", "Then I say this ▸", "Along with this ▸", "Abd U can keep talking ▸", "You there! What is your name!?"};
-        dialogueFarm = new String[] {"Hey what do you think you're doing! ▸"};
 
+        count = 0;
+        userName = "";
+        ready = true;
+
+        dialogue = new String [] {
+                "King: Yet another run down farm... ▸",
+                "King: I thought my rule would have fixed this. ▸",
+                "King: Do I have to teach you farmers a lesson!?▸",
+                "King: I did so once I will do it again!▸",
+                "Farmer: Its the king!▸",
+                "Farmer: You killed my father over taxes! ▸",
+                "King: You there! What is your name!? ▸",
+                "King: Yes, that was me. ▸",
+                "King: And you look like your father too. ▸",
+                userName + ": You horrible king!▸",
+                userName + ": You will pay for this!▸",
+                "King: Tsk. Gaurds! Finish what I have started! ▸"
+
+        };
     }
-
 
     public void nextLine(View v){
         //CHANGE text of the thing we just clicked on
+
+
+
         TextView speech = findViewById(R.id.prologue_speech);
+        speech.setText(dialogue[count]);
 
-        //the king's speech
-        if(countKing < dialogueKing.length && (countKing != 4 || countFarm == 1)){
-
-            speech.setText(dialogueKing[countKing]);
-            countKing++;
-
-
-            if(countKing == 5){
-                getVoice();
-
-            }
-
-            return;
-        }
-
-        if(countKing == 5){
+        if(count == 7 && ready){
             speech.setText("Oh, is your name " + userName + "?");
             Button yes = (Button) findViewById(R.id.yes_ProID);
             Button no = (Button) findViewById(R.id.no_ProID);
@@ -69,17 +81,29 @@ public class PrologueActivity extends  AppCompatActivity{
             no.setEnabled(true);
             yes.setAlpha(1.0f);
             no.setAlpha(1.0f);
-        }
-
-
-        if(countFarm < dialogueFarm.length && countKing == 4){
-            ImageView myImage = (ImageView) findViewById(R.id.farmer_ProID);
-            myImage.setAlpha(1.0f);
-            speech.setText(dialogueFarm[countFarm]);
-            countFarm++;
             return;
         }
 
+
+        if(count == 6 ){
+            getVoice();
+            count++;
+            return;
+        }
+
+        if(count == 4){
+            ImageView myImage = (ImageView) findViewById(R.id.farmer_ProID);
+            myImage.setAlpha(1.0f);
+        }
+
+        count++;
+
+
+
+        if(count == dialogue.length){
+            //start fight
+
+        }
 
     }
 
@@ -97,11 +121,28 @@ public class PrologueActivity extends  AppCompatActivity{
         no.setEnabled(false);
         button.setAlpha(0);
         no.setAlpha(0);
-        countKing++;
+        ready = false;
+
+        dialogue = new String [] {
+                "King: Yet another run down farm... ▸",
+                "King: I thought my rule would have fixed this. ▸",
+                "King: Do I have to teach you farmers a lesson!?▸",
+                "King: I did so once I will do it again!▸",
+                "Farmer: Its the king!▸",
+                "Farmer: You killed my father over taxes! ▸",
+                "King: You there! What is your name!? ▸",
+                "King: Yes, that was me. ▸",
+                "King: And you look like your father too. ▸",
+                userName + ": You horrible king!▸",
+                userName + ": You will pay for this!▸",
+                "King: Tsk. Gaurds! Finish what I have started! ▸"
+        };
+
     }
 
     public void newName(View button){
-        countKing = 4;
+        count = 6;
+        userName = "";
         Button yes = (Button) findViewById(R.id.yes_ProID);
         button.setEnabled(false);
         yes.setEnabled(false);

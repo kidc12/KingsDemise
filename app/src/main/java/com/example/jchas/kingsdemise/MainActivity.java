@@ -14,10 +14,16 @@ public class MainActivity extends AppCompatActivity {
 
     Intent intent;
 
+    public Account userAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //this will be passed through the the game.
+        userAccount = new Account();
+
 
         TextView headline = findViewById(R.id.headline);
         TextView start = findViewById(R.id.start);
@@ -40,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         start.startAnimation(hover);
 
-        //this causes the app to crash and slow down
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-        mediaPlayer.start();
+        //this causes the app to crash and slow down if on a linux machine
+        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        //mediaPlayer.start();
 
         /**
         credits.setOnClickListener(new View.OnClickListener() {

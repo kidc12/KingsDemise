@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/prologue_speech"
-        android:text="..."
+        android:text="(click here to start story)"
         android:textSize="30dp"
         android:onClick="nextLine"
         android:clickable="true"
