@@ -26,25 +26,25 @@ ____________________
 ## School Todo List
 ### Grading:
 * Icon for the app 5
-`Crown`
+`Crown` :heavy_check_mark:
 * Model View Controller architecture 10
-`Sure`
+`Sure` :heavy_check_mark:
 * All data read from and written to Model 10
-`sure`
+`sure` 
 * Multiple views 5
-`sure`
+`sure`:heavy_check_mark:
 * Toast 5
 `When a clue is found`
 * Passing data back and forth between views 10
-`the game object`
+`the game object` 
 * Persistent data (read and write) 10
-`saves the user's last save`
+`the user's name is saved if they close the app`
 * New layout manager or GUI component 10
-`sure`
+`sure` 
 * Transitions 5
-`sure`
+`sure` 
 * Uses an app or phone hardware or Google services 10
-`Voice?`
+`You can speek into the app when the king asks for your name`
 * Meaningful app with nice functionality 10
 `sure`
 * Has advertising (fake ad from Google) 10
