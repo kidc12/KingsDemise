@@ -22,6 +22,61 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+        android:id="@+id/king_ProID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/king"
+        android:scaleX="-1"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:maxWidth="300dp"
+        />
+
+    <ImageView
+        android:id="@+id/farmer_ProID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/farmer"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:maxWidth="300dp"
+        android:alpha="0"
+        />
+
+    <Button
+        android:id="@+id/yes_ProID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30dp"
+        android:onClick="saveName"
+        android:alpha="0"
+        android:clickable="false"
+        />
+
+    <Button
+        android:id="@+id/no_ProID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30dp"
+        android:onClick="newName"
+        android:alpha="0"
+        android:clickable="false"
+        />
 
 
 </android.support.constraint.ConstraintLayout>
