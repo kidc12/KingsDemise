@@ -1,5 +1,6 @@
 package com.example.jchas.kingsdemise;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -7,10 +8,12 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,6 @@ public class PrologueActivity extends  AppCompatActivity{
     private String[] dialogueFarm;
     private int countFarm;
 
-    private String[] dialogueKing2;
-    private int countKing2;
-
     private String userName;
 
 
@@ -35,10 +35,8 @@ public class PrologueActivity extends  AppCompatActivity{
         setContentView(R.layout.activity_prologue);
         countKing = 0;
         countFarm = 0;
-        countKing2 = 0;
-        dialogueKing = new String[] {"Yet another run down farm... ▸", "Then I say this ▸", "Along with this ▸", "Abd U can keep talking ▸"};
+        dialogueKing = new String[] {"Yet another run down farm... ▸", "Then I say this ▸", "Along with this ▸", "Abd U can keep talking ▸", "You there! What is your name!?"};
         dialogueFarm = new String[] {"Hey what do you think you're doing! ▸"};
-        dialogueKing2 = new String[] {"You there! What is your name!? ","Oh so your name is " + userName + "?"};
 
     }
 
@@ -48,41 +46,37 @@ public class PrologueActivity extends  AppCompatActivity{
         TextView speech = findViewById(R.id.prologue_speech);
 
         //the king's speech
-        if(countKing < dialogueKing.length){
-            //set title of person speaking to king
+        if(countKing < dialogueKing.length && (countKing != 4 || countFarm == 1)){
+
             speech.setText(dialogueKing[countKing]);
             countKing++;
+
+
+            if(countKing == 5){
+                getVoice();
+
+            }
+
             return;
         }
 
-        if(countFarm < dialogueFarm.length && countKing >= dialogueKing.length){
+        if(countKing == 5){
+            speech.setText("Oh, is your name " + userName + "?");
+            Button yes = (Button) findViewById(R.id.yes_ProID);
+            Button no = (Button) findViewById(R.id.no_ProID);
+
+            yes.setEnabled(true);
+            no.setEnabled(true);
+            yes.setAlpha(1.0f);
+            no.setAlpha(1.0f);
+        }
+
+
+        if(countFarm < dialogueFarm.length && countKing == 4){
             ImageView myImage = (ImageView) findViewById(R.id.farmer_ProID);
             myImage.setAlpha(1.0f);
             speech.setText(dialogueFarm[countFarm]);
             countFarm++;
-            return;
-        }
-
-        if(countKing2 < dialogueKing2.length && countFarm >= dialogueFarm.length){
-            speech.setText(dialogueKing2[countKing2]);
-            countKing2++;
-
-            if(countKing2 == 1){
-                getVoice();
-            }
-
-            if(countKing2 == 2){
-                Button yes = (Button) findViewById(R.id.yes_ProID);
-                Button no = (Button) findViewById(R.id.no_ProID);
-
-                yes.setEnabled(true);
-                no.setEnabled(true);
-                yes.setAlpha(1.0f);
-                no.setAlpha(1.0f);
-            }
-
-
-
             return;
         }
 
@@ -91,13 +85,30 @@ public class PrologueActivity extends  AppCompatActivity{
 
 
     public void saveName(View button){
-        countKing2 =1;
-        nextLine(button);
+        Context context = getApplicationContext();
+        CharSequence text = "Your name is " + userName;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show();
+
+        Button no = (Button) findViewById(R.id.no_ProID);
+        button.setEnabled(false);
+        no.setEnabled(false);
+        button.setAlpha(0);
+        no.setAlpha(0);
+        countKing++;
     }
 
     public void newName(View button){
-        countKing2 = 1;
-        nextLine(button);
+        countKing = 4;
+        Button yes = (Button) findViewById(R.id.yes_ProID);
+        button.setEnabled(false);
+        yes.setEnabled(false);
+        button.setAlpha(0);
+        yes.setAlpha(0);
+
+
     }
 
     public void getVoice(){
@@ -140,5 +151,6 @@ public class PrologueActivity extends  AppCompatActivity{
 
         }
     }
+
 
 }

@@ -2,6 +2,7 @@ package com.example.jchas.kingsdemise;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         start.startAnimation(hover);
 
         //this causes the app to crash and slow down
-        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-        //mediaPlayer.start();
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        mediaPlayer.start();
 
         /**
         credits.setOnClickListener(new View.OnClickListener() {
