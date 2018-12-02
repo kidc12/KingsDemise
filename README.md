@@ -38,13 +38,13 @@ ____________________
 * Passing data back and forth between views 10
 `the game object` 
 * Persistent data (read and write) 10
-`saves the user's last save`
+`the user's name is saved if they close the app`
 * New layout manager or GUI component 10
 `sure` 
 * Transitions 5
 `sure` 
 * Uses an app or phone hardware or Google services 10
-`Voice?`
+`You can speek into the app when the king asks for your name`
 * Meaningful app with nice functionality 10
 `sure`
 * Has advertising (fake ad from Google) 10
