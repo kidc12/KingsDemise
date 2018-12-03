@@ -1,5 +1,9 @@
 package com.example.jchas.kingsdemise;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 public class Account {
 
     //this object will be pasted through each activity
@@ -12,13 +16,24 @@ public class Account {
     private int userHP;
     private int opHP;
 
+    private static final String PREFERENCE_NAME = "Farmer";
 
-    public Account(){
 
+    public Account(Context context){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         //the username will also be our persistent data
         username = "";
         ending = 0;
     }
+
+    public void setPreferenceName(Context context){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(PREFERENCE_NAME, username);
+        editor.commit();
+
+    }
+
 
     public String getUsername(){
         return username;

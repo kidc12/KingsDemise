@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     Intent intent;
 
-    public Account userAccount;
+    public static Account userAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //this will be passed through the the game.
-        userAccount = new Account();
-
+        userAccount = new Account(this);
 
         TextView headline = findViewById(R.id.headline);
         TextView start = findViewById(R.id.start);

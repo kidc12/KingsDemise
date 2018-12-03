@@ -20,11 +20,12 @@ import java.util.List;
 
 public class PrologueActivity extends  AppCompatActivity{
 
+    Account userAccount;
+
     private String userName;
 
     private String[] dialogue;
     private int count;
-
 
     private boolean ready;
 
@@ -32,6 +33,9 @@ public class PrologueActivity extends  AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue);
+
+
+        userAccount = MainActivity.userAccount;
 
         count = 0;
         userName = "";
@@ -184,6 +188,10 @@ public class PrologueActivity extends  AppCompatActivity{
             }
 
         }
+    }
+
+    private void updateAccount(){
+        userAccount.setPreferenceName(this);
     }
 
 
