@@ -34,17 +34,17 @@ ____________________
 * Multiple views 5
 `sure`:heavy_check_mark:
 * Toast 5
-`When a clue is found`
+`When a clue is found` :heavy_check_mark:
 * Passing data back and forth between views 10
 `the game object` 
 * Persistent data (read and write) 10
 `the user's name is saved if they close the app`
 * New layout manager or GUI component 10
-`sure` 
+`status bar` 
 * Transitions 5
-`sure` 
+`NEEEEEEEEEEED` 
 * Uses an app or phone hardware or Google services 10
-`You can speek into the app when the king asks for your name`
+`You can speek into the app when the king asks for your name`:heavy_check_mark:
 * Meaningful app with nice functionality 10
 `sure`
 * Has advertising (fake ad from Google) 10
