@@ -69,7 +69,7 @@ public class PrologueEndActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, MiddleActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
 

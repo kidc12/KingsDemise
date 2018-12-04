@@ -26,18 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         TextView headline = findViewById(R.id.headline);
         TextView start = findViewById(R.id.start);
-        TextView settings = findViewById(R.id.settings);
-        TextView credits = findViewById(R.id.credits);
 
-        //Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
         Typeface font1 = Typeface.createFromAsset(getAssets(), "Sunset Boulevard.otf");
         Typeface font2 = Typeface.createFromAsset(getAssets(), "pixelflag.ttf");
 
         headline.setTypeface(font1);
         start.setTypeface(font2);
-        settings.setTypeface(font2);
-        credits.setTypeface(font2);
-
 
         Animation hover = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.super_hover);
@@ -46,23 +40,8 @@ public class MainActivity extends AppCompatActivity {
         start.startAnimation(hover);
 
         //this causes the app to crash and slow down if on a linux machine
-        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-        //mediaPlayer.start();
-
-        /**
-        credits.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (v.getId() == R.id.start) {
-                    start(v);
-                } else if (v.getId() == R.id.settings) {
-                    settings(v);
-                } else if (v.getId() == R.id.credits) {
-                    credits(v);
-                }
-            }
-        });
-         **/
-
+//        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+//        mediaPlayer.start();
 
     }
 
@@ -70,17 +49,12 @@ public class MainActivity extends AppCompatActivity {
         //TODO: UPDATE THIS
         intent = new Intent(MainActivity.this, CreditActivity.class);
         startActivity(intent);
-    }
-
-    public void settings(View view) {
-        //TODO: UPDATE THIS
-        intent = new Intent(MainActivity.this, SettingsActivity.class);
-        startActivity(intent);
-
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void start(View view) {
         intent = new Intent(MainActivity.this, PrologueActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

@@ -98,7 +98,7 @@ public class PrologueActivity extends  AppCompatActivity{
         if(count == dialogue.length){
             Intent intent = new Intent(this, CombatActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }

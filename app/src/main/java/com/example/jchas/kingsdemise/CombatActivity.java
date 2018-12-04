@@ -21,5 +21,6 @@ public class CombatActivity extends AppCompatActivity {
     public void SKIP(View view){
         Intent intent = new Intent(this, PrologueEndActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

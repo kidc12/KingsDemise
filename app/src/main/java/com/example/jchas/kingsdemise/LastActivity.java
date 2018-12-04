@@ -26,7 +26,6 @@ public class LastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last);
 
-
         //userAccount = PrologueActivity.userAccount;
 
         count = 0;
@@ -65,7 +64,7 @@ public class LastActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, LastCombatActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }

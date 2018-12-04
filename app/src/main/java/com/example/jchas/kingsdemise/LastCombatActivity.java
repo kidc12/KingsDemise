@@ -20,5 +20,6 @@ public class LastCombatActivity extends AppCompatActivity {
     public void SKIPLast(View view){
         Intent intent = new Intent(this, LastEndActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

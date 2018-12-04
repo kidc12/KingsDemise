@@ -64,7 +64,7 @@ public class LastEndActivity extends AppCompatActivity {
 
         if(count == dialogue.length){
             this.finish();
-
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
 

@@ -31,7 +31,6 @@ public class Account {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(PREFERENCE_NAME, username);
         editor.commit();
-
     }
 
 

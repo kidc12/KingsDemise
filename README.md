@@ -42,7 +42,7 @@ ____________________
 * New layout manager or GUI component 10
 `status bar` 
 * Transitions 5
-`NEEEEEEEEEEED` 
+`NEEEEEEEEEEED` :heavy_check_mark:
 * Uses an app or phone hardware or Google services 10
 `You can speek into the app when the king asks for your name`:heavy_check_mark:
 * Meaningful app with nice functionality 10
