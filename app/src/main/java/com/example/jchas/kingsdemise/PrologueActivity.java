@@ -1,5 +1,6 @@
 package com.example.jchas.kingsdemise;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -7,73 +8,159 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrologueActivity extends  AppCompatActivity{
 
-    private String[] dialogueKing;
-    private int countKing;
+    Account userAccount;
 
-    private String[] dialogueFarm;
-    private int countFarm;
+    private String userName;
 
-    private String[] dialogueKing2;
-    private int countKing2;
+    private String[] dialogue;
+    private int count;
 
+    private boolean ready;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prologue);
-        countKing = 0;
-        dialogueKing = new String[] {"Yet another run down farm... ▸", "Then I say this ▸", "Along with this ▸", "Abd U can keep talking ▸"};
-        dialogueFarm = new String[] {"Hey what do you think you're doing! ▸"};
-        dialogueKing2 = new String[] {"You there! What is your name!? "};
 
+
+        userAccount = MainActivity.userAccount;
+
+        count = 0;
+        userName = "Farmer";
+        ready = true;
+
+        dialogue = new String [] {
+                "King: Yet another run down farm... ▸",
+                "King: I thought my rule would have fixed this. ▸",
+                "King: Do I have to teach you farmers a lesson!?▸",
+                "King: I did so once I will do it again!▸",
+                "Farmer: Its the king!▸",
+                "Farmer: You killed my father over taxes! ▸",
+                "King: You there! What is your name!? ▸",
+                "King: Yes, that was me. ▸",
+                "King: And you look like your father too. ▸",
+                userName + ": You horrible king!▸",
+                userName + ": You will pay for this!▸",
+                "King: Tsk. Gaurds! Finish what I have started! ▸",
+                ""
+
+        };
     }
-
 
     public void nextLine(View v){
         //CHANGE text of the thing we just clicked on
+
+
+
         TextView speech = findViewById(R.id.prologue_speech);
+        speech.setText(dialogue[count]);
 
-        //the king's speech
-        if(countKing < dialogueKing.length){
-            //set title of person speaking to king
-            speech.setText(dialogueKing[countKing]);
-            countKing++;
+        if(count == 7 && ready){
+            speech.setText("Oh, is your name " + userName + "?");
+            Button yes = (Button) findViewById(R.id.yes_ProID);
+            Button no = (Button) findViewById(R.id.no_ProID);
+
+            yes.setEnabled(true);
+            no.setEnabled(true);
+            yes.setAlpha(1.0f);
+            no.setAlpha(1.0f);
+            return;
         }
 
-        if(countFarm < dialogueFarm.length && countKing >= dialogueKing.length){
-            speech.setText(dialogueFarm[countFarm]);
-            countFarm++;
+
+        if(count == 6 ){
+            getVoice();
+            count++;
+            return;
         }
 
-        if(countKing < dialogueKing2.length){
-            speech.setText(dialogueKing2[countKing2]);
-            countKing2++;
+        if(count == 4){
+            ImageView myImage = (ImageView) findViewById(R.id.farmer_ProID);
+            myImage.setAlpha(1.0f);
+        }
 
-            //voice
-            PackageManager manager = getPackageManager();
-            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            List<ResolveInfo> list = manager.queryIntentActivities( intent, 0);
-            if( list.size() > 0){
-                //listen and report
-                listen(intent);
-            }else {
-                Log.w("VoiceDump", "Error");
-            }
+        count++;
+
+
+
+        if(count == dialogue.length){
+            Intent intent = new Intent(this, CombatActivity.class);
+            startActivity(intent);
 
         }
-        
+
+    }
+
+
+    public void saveName(View button){
+        Context context = getApplicationContext();
+        CharSequence text = "Your name is " + userName;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show();
+
+        Button no = (Button) findViewById(R.id.no_ProID);
+        button.setEnabled(false);
+        no.setEnabled(false);
+        button.setAlpha(0);
+        no.setAlpha(0);
+        ready = false;
+
+        dialogue = new String [] {
+                "King: Yet another run down farm... ▸",
+                "King: I thought my rule would have fixed this. ▸",
+                "King: Do I have to teach you farmers a lesson!?▸",
+                "King: I did so once I will do it again!▸",
+                "Farmer: Its the king!▸",
+                "Farmer: You killed my father over taxes! ▸",
+                "King: You there! What is your name!? ▸",
+                "King: Yes, that was me. ▸",
+                "King: And you look like your father too. ▸",
+                userName + ": You horrible king!▸",
+                userName + ": You will pay for this!▸",
+                "King: Tsk. Gaurds! Finish what I have started! ▸",
+                ""
+        };
+
+    }
+
+    public void newName(View button){
+        count = 6;
+        userName = "Farmer";
+        Button yes = (Button) findViewById(R.id.yes_ProID);
+        button.setEnabled(false);
+        yes.setEnabled(false);
+        button.setAlpha(0);
+        yes.setAlpha(0);
 
 
     }
 
+    public void getVoice(){
+        //voice
+        PackageManager manager = getPackageManager();
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        List<ResolveInfo> list = manager.queryIntentActivities( intent, 0);
+        if( list.size() > 0){
+            //listen and report
+            listen(intent);
+        }else {
+            Log.w("VoiceDump", "Error");
+        }
+    }
 
     public void listen( Intent intent){
 
@@ -85,11 +172,12 @@ public class PrologueActivity extends  AppCompatActivity{
         startActivityForResult(intent, 1);
     }
 
-
     protected void onActivityResult( int requestCode, int resultCode, Intent data ) {
         if( requestCode == 1 && resultCode == RESULT_OK ) {
             ArrayList<String> results = data.getStringArrayListExtra( RecognizerIntent.EXTRA_RESULTS );
             float [] scores = data.getFloatArrayExtra( RecognizerIntent.EXTRA_CONFIDENCE_SCORES );
+
+            userName = results.get(0);
 
             int i = 0;
             for( String s : results ) {
@@ -101,5 +189,10 @@ public class PrologueActivity extends  AppCompatActivity{
 
         }
     }
+
+    private void updateAccount(){
+        userAccount.setPreferenceName(this);
+    }
+
 
 }
