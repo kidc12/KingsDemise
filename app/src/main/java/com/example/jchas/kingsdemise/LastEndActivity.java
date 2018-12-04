@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MiddleEndActivity extends AppCompatActivity {
+public class LastEndActivity extends AppCompatActivity {
 
     private Account userAccount;
-
 
     private String userName;
 
@@ -25,10 +23,10 @@ public class MiddleEndActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_middle_end);
-        //combat goes here
+        setContentView(R.layout.activity_last_end);
 
-        //userAccount = MainActivity.userAccount;
+
+        userAccount = MainActivity.userAccount;
 
         count = 0;
         userName = "Farmer";
@@ -36,28 +34,21 @@ public class MiddleEndActivity extends AppCompatActivity {
 
 
         dialogue = new String [] {
-                "Old Lady: Hey you rowdy young men! ▸", // toats of woman pushes a man
-                "Old Lady: Go on Farmer! I'll distract them. ▸",
-                "Old Lady: You can find the King just up the road. ▸",
-                "Old Lady: save us from his greed...▸",
+                userName + ": You're Finished King! ▸",
+                userName + ": The people are saved from you!▸",
                 ""
+
         };
-
-
     }
 
+    public void nextSen(View v){
 
-
-    public void nextSpeech(View view){
-
-
-        TextView speech = findViewById(R.id.middle_speech_end);
+        TextView speech = findViewById(R.id.last_speechEnd);
         speech.setText(dialogue[count]);
-
 
         if(count == 2){
             Context context = getApplicationContext();
-            CharSequence text = "The Old Woman Stood in front of Them";
+            CharSequence text = "You Defeated the King";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.setGravity(Gravity.TOP, 0, 0);
@@ -66,17 +57,18 @@ public class MiddleEndActivity extends AppCompatActivity {
         }
 
 
-
         count++;
 
 
 
+
         if(count == dialogue.length){
-            Intent intent = new Intent(this, LastActivity.class);
-            startActivity(intent);
+            this.finish();
 
         }
-    }
 
+
+
+    }
 
 }

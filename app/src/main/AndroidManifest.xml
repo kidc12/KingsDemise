@@ -45,6 +45,10 @@
             <activity android:name=".MiddleActivity" android:screenOrientation="landscape"></activity>
             <activity android:name=".PrologueEndActivity" android:screenOrientation="landscape"></activity>
             <activity android:name=".MiddleEndActivity" android:screenOrientation="landscape"></activity>
+            <activity android:name=".MiddleCombatActivity" android:screenOrientation="landscape"></activity>
+            <activity android:name=".LastActivity" android:screenOrientation="landscape"></activity>
+            <activity android:name=".LastCombatActivity" android:screenOrientation="landscape"></activity>
+            <activity android:name=".LastEndActivity" android:screenOrientation="landscape"></activity>
 
     </application>
 

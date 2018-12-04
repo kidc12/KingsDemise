@@ -3,48 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".PrologueActivity"
+    tools:context=".MiddleActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/farm">
+    android:background="@drawable/castle">
 
 
     <ImageView
-        android:id="@+id/gaurds_ComID"
-        android:layout_width="188dp"
-        android:layout_height="230dp"
-        android:layout_marginRight="24dp"
+        android:id="@+id/farmer_LastID"
+        android:layout_width="126dp"
+        android:layout_height="137dp"
+        android:layout_marginRight="436dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="300dp"
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/farm_f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.689" />
+
+    <ImageView
+        android:id="@+id/king_LastID"
+        android:layout_width="191dp"
+        android:layout_height="140dp"
+        android:layout_marginLeft="392dp"
         android:adjustViewBounds="true"
         android:maxWidth="300dp"
         android:scaleType="centerCrop"
         android:scaleX="-1"
-        android:src="@drawable/gaurds"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
-
-    <ImageView
-        android:id="@+id/farmer_ComID"
-        android:layout_width="191dp"
-        android:layout_height="140dp"
-        android:layout_marginLeft="16dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/farm_f"
+        android:src="@drawable/king"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
-
-        />
+        app:layout_constraintVertical_bias="0.684" />
 
     <Button
-        android:id="@+id/skip_ComID"
+        android:id="@+id/skip_LastID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="SKIP"
+        android:onClick="SKIPLast"
         android:text="SKIP"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,5 +51,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
 </android.support.constraint.ConstraintLayout>

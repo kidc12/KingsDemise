@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MiddleActivity"
+    tools:context=".MiddleEndActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/town">
 
 
     <TextView
-        android:id="@+id/middle_speech"
+        android:id="@+id/middle_speech_end"
         android:text="(click here to start story)"
         android:textSize="30dp"
         android:onClick="nextSpeech"
@@ -41,9 +41,8 @@
         android:id="@+id/pol_MidID"
         android:layout_width="191dp"
         android:layout_height="140dp"
-        android:layout_marginLeft="144dp"
+        android:layout_marginLeft="24dp"
         android:adjustViewBounds="true"
-        android:alpha="0"
         android:maxWidth="300dp"
         android:scaleType="centerCrop"
         android:scaleX="-1"
@@ -57,18 +56,14 @@
         android:id="@+id/old_MidID"
         android:layout_width="191dp"
         android:layout_height="140dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="132dp"
         android:adjustViewBounds="true"
         android:maxWidth="300dp"
         android:scaleType="centerCrop"
-        android:scaleX="-1"
         android:src="@drawable/old"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776"
-        android:alpha="0"
-        />
-
+        app:layout_constraintVertical_bias="0.716" />
 
 </android.support.constraint.ConstraintLayout>
