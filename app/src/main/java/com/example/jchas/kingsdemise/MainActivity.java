@@ -2,19 +2,24 @@ package com.example.jchas.kingsdemise;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;
-
+    private InterstitialAd interstitialAd;
     public static Account userAccount;
+    Boolean adClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +45,17 @@ public class MainActivity extends AppCompatActivity {
         start.startAnimation(hover);
 
         //this causes the app to crash and slow down if on a linux machine
-//        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-//        mediaPlayer.start();
+        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        //mediaPlayer.start();
+
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.ad_unit_id));
+
+        if (!interstitialAd.isLoading() && !interstitialAd.isLoaded()) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(adRequest);
+        }
 
     }
 
@@ -52,9 +66,25 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    private void showInterstitial() {
+        if (interstitialAd != null && interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        } else {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(adRequest);
+            interstitialAd.show();
+            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void start(View view) {
-        intent = new Intent(MainActivity.this, PrologueActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        if(adClicked == false){
+            showInterstitial();
+            adClicked = true;
+        }else{
+            intent = new Intent(MainActivity.this, PrologueActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
     }
 }
