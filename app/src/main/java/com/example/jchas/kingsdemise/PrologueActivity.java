@@ -20,7 +20,7 @@ import java.util.List;
 
 public class PrologueActivity extends  AppCompatActivity{
 
-    Account userAccount;
+    public static Account userAccount;
 
     private String userName;
 
@@ -38,7 +38,7 @@ public class PrologueActivity extends  AppCompatActivity{
         userAccount = MainActivity.userAccount;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccount.getUsername();
         ready = true;
 
         dialogue = new String [] {
@@ -68,6 +68,12 @@ public class PrologueActivity extends  AppCompatActivity{
         speech.setText(dialogue[count]);
 
         if(count == 7 && ready){
+
+
+            //testing without mic on linux machine !!!!!!!!!!!!!!
+            userName = "Joey";
+
+
             speech.setText("Oh, is your name " + userName + "?");
             Button yes = (Button) findViewById(R.id.yes_ProID);
             Button no = (Button) findViewById(R.id.no_ProID);
@@ -98,13 +104,14 @@ public class PrologueActivity extends  AppCompatActivity{
         if(count == dialogue.length){
             Intent intent = new Intent(this, CombatActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }
 
 
     public void saveName(View button){
+
         Context context = getApplicationContext();
         CharSequence text = "Your name is " + userName;
         int duration = Toast.LENGTH_SHORT;
@@ -134,6 +141,9 @@ public class PrologueActivity extends  AppCompatActivity{
                 "King: Tsk. Gaurds! Finish what I have started! ▸",
                 ""
         };
+
+        userAccount.setUsername(userName);
+        updateAccount();
 
     }
 

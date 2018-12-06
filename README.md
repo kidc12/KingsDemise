@@ -42,12 +42,12 @@ ____________________
 * New layout manager or GUI component 10
 `status bar` 
 * Transitions 5
-`NEEEEEEEEEEED` 
+`NEEEEEEEEEEED` :heavy_check_mark:
 * Uses an app or phone hardware or Google services 10
 `You can speek into the app when the king asks for your name`:heavy_check_mark:
 * Meaningful app with nice functionality 10
 `sure`
-* Has advertising (fake ad from Google) 10
+* Has advertising (fake ad from Google) 10 :heavy_check_mark:
 `we can have loading screens inbetween screens that displays a tip, and ad, and a walking character for a certain amount of seconds.`
 * Extra credit: Crowd sourced app (storing data on server; writing/reading)
 `once you finish the game you store their choice to the server and then show the player at the end of the game what portion of players choose the same path`

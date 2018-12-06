@@ -29,7 +29,7 @@ public class CreditActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 TextView headline = findViewById(R.id.name_bar);
-                Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
+                Typeface font1 = Typeface.createFromAsset(getAssets(), "Sunset Boulevar.ttf");
                 headline.setTypeface(font1);
 
                 Log.i("Send email", "");
@@ -37,7 +37,7 @@ public class CreditActivity extends AppCompatActivity {
                         "jckitson@loyola.edu"
                 };
                 String[] CC = {
-                        "cmrusso@loyola.edu"
+                        "cmrusso@loyola.edu,pwalves@loyola.edu"
                 };
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setData(Uri.parse("mailto:"));
