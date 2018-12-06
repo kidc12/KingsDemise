@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,8 @@ public class PrologueActivity extends  AppCompatActivity{
     private int count;
 
     private boolean ready;
+    MediaPlayer mediaPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,13 @@ public class PrologueActivity extends  AppCompatActivity{
                 ""
 
         };
+
+        //this causes the app to crash and slow down if on a linux machine
+        mediaPlayer = MediaPlayer.create(this, R.raw.passepied);
+        mediaPlayer.start();
+
+
+
     }
 
     public void nextLine(View v){
@@ -102,6 +112,7 @@ public class PrologueActivity extends  AppCompatActivity{
 
 
         if(count == dialogue.length){
+            mediaPlayer.stop();
             Intent intent = new Intent(this, CombatActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

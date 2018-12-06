@@ -1,6 +1,7 @@
 package com.example.jchas.kingsdemise;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class MiddleCombatActivity extends AppCompatActivity {
 
     private CombatScenario currScenario;
     private boolean gameOver;
+    MediaPlayer mediaPlayer;
 
     /**
      * Sets the screen and defines all views
@@ -39,6 +41,8 @@ public class MiddleCombatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_middle_combat);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.clairdelune);
+        mediaPlayer.start();
         userAccountCommid = PrologueActivity.userAccount;
 
         // GUI elements
@@ -188,14 +192,21 @@ public class MiddleCombatActivity extends AppCompatActivity {
      * Checks to see if there is a winner and who it is. Sets the game over variable accordingly
      */
     public void checkWinner() {
+
+
+
         int result = currScenario.winner();
         if (result == 1) {
+
+            mediaPlayer.stop();
             gameText.setText(currScenario.getPlayerName(true) + " Wins!");
             gameOver = true;
             Intent intent = new Intent(this, MiddleEndActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (result == -1) {
+            mediaPlayer.stop();
+
             gameText.setText(currScenario.getPlayerName(false) + " Win!");
             gameOver = true;
             Intent intent = new Intent(this, YouLoseActivity.class);

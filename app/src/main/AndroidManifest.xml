@@ -32,11 +32,6 @@
             android:label="@string/title_activity_game"
             android:theme="@style/FullscreenTheme"
             android:screenOrientation="landscape"/>
-        <activity
-            android:name=".CreditActivity"
-            android:label="@string/title_activity_credit"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="landscape"/>
 
             <activity
             android:name=".PrologueActivity"

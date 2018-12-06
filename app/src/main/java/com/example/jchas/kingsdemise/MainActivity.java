@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private InterstitialAd interstitialAd;
     public static Account userAccount;
     Boolean adClicked = false;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Typeface font2 = Typeface.createFromAsset(getAssets(), "pixelflag.ttf");
 
 
-        if(!userAccount.getUsername().equals("Farmer")){
+        if(!userAccount.getUsername().equals("farmer")){
             TextView saved = findViewById(R.id.savedName);
             saved.setText("Last Played as: " + userAccount.getUsername());
         }
@@ -54,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
         start.startAnimation(hover);
 
         //this causes the app to crash and slow down if on a linux machine
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
         mediaPlayer.start();
+
+
 
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
         interstitialAd = new InterstitialAd(this);
@@ -68,12 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void credits(View view) {
-        //TODO: UPDATE THIS
-        intent = new Intent(MainActivity.this, CreditActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+
 
     private void showInterstitial() {
         if (interstitialAd != null && interstitialAd.isLoaded()) {
@@ -91,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             showInterstitial();
             adClicked = true;
         }else{
+            mediaPlayer.stop();
             intent = new Intent(MainActivity.this, PrologueActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

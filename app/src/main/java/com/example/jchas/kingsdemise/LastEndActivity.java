@@ -2,6 +2,7 @@ package com.example.jchas.kingsdemise;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -19,6 +20,7 @@ public class LastEndActivity extends AppCompatActivity {
     private int count;
 
     private boolean ready;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,11 @@ public class LastEndActivity extends AppCompatActivity {
                 ""
 
         };
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.fetes);
+        mediaPlayer.start();
+
+
     }
 
     public void nextSen(View v){
@@ -65,6 +72,7 @@ public class LastEndActivity extends AppCompatActivity {
         if(count == dialogue.length){
             //this.finish();
 
+            mediaPlayer.stop();
             Intent intent = new Intent(LastEndActivity.this, MainActivity.class);
             startActivity(intent);
 

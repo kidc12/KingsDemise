@@ -1,6 +1,7 @@
 package com.example.jchas.kingsdemise;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,8 @@ public class MiddleActivity extends AppCompatActivity {
 
     private boolean ready;
 
+    MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,9 @@ public class MiddleActivity extends AppCompatActivity {
 
 
         userAccountMid = CombatActivity.userAccountCom;
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.clairdelune);
+        mediaPlayer.start();
 
         count = 0;
         userName = userAccountMid.getUsername();
@@ -71,6 +77,7 @@ public class MiddleActivity extends AppCompatActivity {
 
 
         if(count == dialogue.length){
+            mediaPlayer.stop();
             Intent intent = new Intent(this, MiddleCombatActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

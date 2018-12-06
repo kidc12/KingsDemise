@@ -2,6 +2,7 @@ package com.example.jchas.kingsdemise;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -19,6 +20,8 @@ public class PrologueEndActivity extends AppCompatActivity {
 
     private String[] dialogue;
     private int count;
+
+    MediaPlayer mediaPlayer;
 
     private boolean ready;
 
@@ -43,6 +46,9 @@ public class PrologueEndActivity extends AppCompatActivity {
                 ""
 
         };
+        mediaPlayer = MediaPlayer.create(this, R.raw.passepied);
+        mediaPlayer.start();
+
     }
 
     public void nextLine(View v){
@@ -67,6 +73,7 @@ public class PrologueEndActivity extends AppCompatActivity {
 
 
         if(count == dialogue.length){
+            mediaPlayer.stop();
             Intent intent = new Intent(this, MiddleActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
