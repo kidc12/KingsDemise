@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class PrologueEndActivity extends AppCompatActivity {
 
-    private Account userAccount;
+    public static Account userAccountPend;
 
     private String userName;
 
@@ -28,10 +28,10 @@ public class PrologueEndActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prologue_end);
 
 
-        userAccount = MainActivity.userAccount;
+        userAccountPend = CombatActivity.userAccountCom;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccountPend.getUsername();
         ready = true;
 
 
@@ -69,7 +69,7 @@ public class PrologueEndActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, MiddleActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
 

@@ -9,8 +9,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-3940256099942544~3347511713"/>
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
@@ -31,12 +37,8 @@
             android:label="@string/title_activity_credit"
             android:theme="@style/AppTheme"
             android:screenOrientation="landscape"/>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:screenOrientation="landscape" />
 
-        <activity
+            <activity
             android:name=".PrologueActivity"
             android:screenOrientation="landscape" />
             <activity
@@ -49,6 +51,8 @@
             <activity android:name=".LastActivity" android:screenOrientation="landscape"></activity>
             <activity android:name=".LastCombatActivity" android:screenOrientation="landscape"></activity>
             <activity android:name=".LastEndActivity" android:screenOrientation="landscape"></activity>
+            <activity android:name=".YouLoseActivity" android:screenOrientation="landscape"></activity>
+
 
     </application>
 

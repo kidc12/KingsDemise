@@ -9,12 +9,18 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;
-
+    private InterstitialAd interstitialAd;
     public static Account userAccount;
+    Boolean adClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +32,20 @@ public class MainActivity extends AppCompatActivity {
 
         TextView headline = findViewById(R.id.headline);
         TextView start = findViewById(R.id.start);
-        TextView settings = findViewById(R.id.settings);
-        TextView credits = findViewById(R.id.credits);
 
-        //Typeface font1 = Typeface.createFromAsset(getAssets(), "Blox.ttf");
         Typeface font1 = Typeface.createFromAsset(getAssets(), "Sunset Boulevard.otf");
         Typeface font2 = Typeface.createFromAsset(getAssets(), "pixelflag.ttf");
 
+
+        if(!userAccount.getUsername().equals("Farmer")){
+            TextView saved = findViewById(R.id.savedName);
+            saved.setText("Last Played as: " + userAccount.getUsername());
+        }
+
+
+
         headline.setTypeface(font1);
         start.setTypeface(font2);
-        settings.setTypeface(font2);
-        credits.setTypeface(font2);
-
 
         Animation hover = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.super_hover);
@@ -49,20 +57,14 @@ public class MainActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
         mediaPlayer.start();
 
-        /**
-        credits.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (v.getId() == R.id.start) {
-                    start(v);
-                } else if (v.getId() == R.id.settings) {
-                    settings(v);
-                } else if (v.getId() == R.id.credits) {
-                    credits(v);
-                }
-            }
-        });
-         **/
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.ad_unit_id));
 
+        if (!interstitialAd.isLoading() && !interstitialAd.isLoaded()) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(adRequest);
+        }
 
     }
 
@@ -70,17 +72,28 @@ public class MainActivity extends AppCompatActivity {
         //TODO: UPDATE THIS
         intent = new Intent(MainActivity.this, CreditActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    public void settings(View view) {
-        //TODO: UPDATE THIS
-        intent = new Intent(MainActivity.this, SettingsActivity.class);
-        startActivity(intent);
-
+    private void showInterstitial() {
+        if (interstitialAd != null && interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        } else {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(adRequest);
+            interstitialAd.show();
+            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void start(View view) {
-        intent = new Intent(MainActivity.this, PrologueActivity.class);
-        startActivity(intent);
+        if(adClicked == false){
+            showInterstitial();
+            adClicked = true;
+        }else{
+            intent = new Intent(MainActivity.this, PrologueActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
     }
 }

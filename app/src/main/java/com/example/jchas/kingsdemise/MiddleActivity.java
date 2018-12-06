@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MiddleActivity extends AppCompatActivity {
 
-    Account userAccount;
+    public static Account userAccountMid;
 
     private String userName;
 
@@ -24,10 +24,10 @@ public class MiddleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_middle);
 
 
-        //userAccount = PrologueActivity.userAccount;
+        userAccountMid = CombatActivity.userAccountCom;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccountMid.getUsername();
         ready = true;
 
         dialogue = new String [] {
@@ -73,7 +73,7 @@ public class MiddleActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, MiddleCombatActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 }

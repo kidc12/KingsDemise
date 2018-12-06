@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class LastEndActivity extends AppCompatActivity {
 
-    private Account userAccount;
+    public static Account userAccountLastEnd;
 
     private String userName;
 
@@ -26,10 +26,10 @@ public class LastEndActivity extends AppCompatActivity {
         setContentView(R.layout.activity_last_end);
 
 
-        userAccount = MainActivity.userAccount;
+        userAccountLastEnd = LastCombatActivity.userAccountComlast;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccountLastEnd.getUsername();
         ready = true;
 
 
@@ -63,8 +63,12 @@ public class LastEndActivity extends AppCompatActivity {
 
 
         if(count == dialogue.length){
-            this.finish();
+            //this.finish();
 
+            Intent intent = new Intent(LastEndActivity.this, MainActivity.class);
+            startActivity(intent);
+
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
 

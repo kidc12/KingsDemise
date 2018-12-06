@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class LastActivity extends AppCompatActivity {
 
-    Account userAccount;
+    public static Account userAccountLast;
 
     private String userName;
 
@@ -26,11 +26,10 @@ public class LastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last);
 
-
-        //userAccount = PrologueActivity.userAccount;
+        userAccountLast = MiddleEndActivity.userAccountMidend;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccountLast.getUsername();
         ready = true;
 
         dialogue = new String [] {
@@ -65,7 +64,7 @@ public class LastActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, LastCombatActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
     }

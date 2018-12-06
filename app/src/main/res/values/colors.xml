@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorHealthGood">#70ff38</color>
+    <color name="colorHealthBad">#f72a2a</color>
+    <color name="colorHealthGone">#555</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>

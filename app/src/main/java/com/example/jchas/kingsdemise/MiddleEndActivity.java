@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MiddleEndActivity extends AppCompatActivity {
 
-    private Account userAccount;
+    public static Account userAccountMidend;
 
 
     private String userName;
@@ -28,10 +28,10 @@ public class MiddleEndActivity extends AppCompatActivity {
         setContentView(R.layout.activity_middle_end);
         //combat goes here
 
-        //userAccount = MainActivity.userAccount;
+        userAccountMidend = MiddleCombatActivity.userAccountCommid;
 
         count = 0;
-        userName = "Farmer";
+        userName = userAccountMidend.getUsername();
         ready = true;
 
 
@@ -74,7 +74,7 @@ public class MiddleEndActivity extends AppCompatActivity {
         if(count == dialogue.length){
             Intent intent = new Intent(this, LastActivity.class);
             startActivity(intent);
-
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 

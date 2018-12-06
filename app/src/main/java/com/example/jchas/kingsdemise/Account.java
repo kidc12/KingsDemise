@@ -16,14 +16,15 @@ public class Account {
     private int userHP;
     private int opHP;
 
-    private static final String PREFERENCE_NAME = "Farmer";
+    private static final String PREFERENCE_NAME = "userName";
 
 
     public Account(Context context){
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        setUsername(pref.getString(PREFERENCE_NAME, "Farmer"));
+
+
         //the username will also be our persistent data
-        username = "";
-        ending = 0;
     }
 
     public void setPreferenceName(Context context){
@@ -31,10 +32,12 @@ public class Account {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(PREFERENCE_NAME, username);
         editor.commit();
-
     }
 
 
+    public void setUsername(String name){
+        username = name;
+    }
     public String getUsername(){
         return username;
     }
