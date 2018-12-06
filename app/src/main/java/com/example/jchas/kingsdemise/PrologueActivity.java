@@ -149,7 +149,6 @@ public class PrologueActivity extends  AppCompatActivity{
 
     public void newName(View button){
         count = 6;
-        userName = "Farmer";
         Button yes = (Button) findViewById(R.id.yes_ProID);
         button.setEnabled(false);
         yes.setEnabled(false);
