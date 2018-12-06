@@ -52,7 +52,7 @@ public class CombatActivity extends AppCompatActivity {
         nextButton = (Button) findViewById(R.id.buttonNext);
 
         // Game elements
-        currScenario = new CombatScenario("My Name", 0);
+        currScenario = new CombatScenario(userAccountCom.getUsername(), 0);  //change this
         gameOver = false;
 
         // Setting the screen values
@@ -192,9 +192,15 @@ public class CombatActivity extends AppCompatActivity {
         if (result == 1) {
             gameText.setText(currScenario.getPlayerName(true) + " Wins!");
             gameOver = true;
+            Intent intent = new Intent(this, PrologueEndActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (result == -1) {
             gameText.setText(currScenario.getPlayerName(false) + " Win!");
             gameOver = true;
+            Intent intent = new Intent(this, YouLoseActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else {
             gameOver = false;
         }

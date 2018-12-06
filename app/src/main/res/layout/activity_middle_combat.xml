@@ -1,55 +1,171 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MiddleActivity"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/town">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MiddleCombatActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/town"
+    >
 
 
     <ImageView
-        android:id="@+id/cow_ComID"
+        android:id="@+id/farmer_ID"
         android:layout_width="126dp"
         android:layout_height="137dp"
+        android:layout_marginLeft="64dp"
         android:layout_marginRight="436dp"
+        android:layout_marginStart="64dp"
         android:adjustViewBounds="true"
         android:maxWidth="300dp"
-        android:scaleType="centerCrop"
+        android:src="@drawable/farm_f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.671" />
+
+    <ImageView
+        android:id="@+id/policemanc_ID"
+        android:layout_width="153dp"
+        android:layout_height="116dp"
+        android:layout_marginLeft="420dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="300dp"
         android:scaleX="-1"
         android:src="@drawable/cowboys"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
-
-    <ImageView
-        android:id="@+id/farmer_ComID"
-        android:layout_width="191dp"
-        android:layout_height="140dp"
-        android:layout_marginLeft="392dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="300dp"
-        android:scaleType="centerCrop"
-        android:scaleX="-1"
-        android:src="@drawable/farm_f"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintVertical_bias="0.629" />
+
 
     <Button
-        android:id="@+id/skip_MidID"
-        android:layout_width="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/buttonNext"
         android:layout_height="wrap_content"
-        android:onClick="SKIPMiddle"
-        android:text="SKIP"
-        android:textSize="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="2dp"
+        android:layout_width="wrap_content"
+        android:onClick="nextTurn"
+        android:shadowColor="#000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="3"
+        android:text="Next >"
+        android:textColor="#eee"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStrike"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_width="wrap_content"
+        android:onClick="pressStrike"
+        android:text="STRIKE"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGuard"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:onClick="pressGuard"
+        android:text="GUARD"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSpecial"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="wrap_content"
+        android:onClick="pressSpec"
+        android:text="SPECIAL"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:id="@+id/playerHealth"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:layout_width="200dp"
+        android:progress="75"
+        android:progressBackgroundTint="@color/colorHealthGood"
+        android:progressTint="@color/colorHealthGone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:id="@+id/enemyHealth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:progress="25"
+        android:progressBackgroundTint="@color/colorHealthGood"
+        android:progressTint="@color/colorHealthGone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/styleDefaultText"
+        android:id="@+id/enemyName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:text="ENEMY NAME"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/styleDefaultText"
+        android:id="@+id/enemyHealthNum"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="25dp"
+        android:text="###/### e"
+        android:textSize="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/styleDefaultText"
+        android:id="@+id/playerHealthNum"
+        android:layout_marginBottom="67dp"
+        android:layout_marginRight="80dp"
+        android:text="###/### P"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        style="@style/styleDefaultText"
+        android:id="@+id/playerName"
+        android:layout_marginBottom="67dp"
+        android:layout_marginLeft="20dp"
+        android:text="PLAYER NAME"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        style="@style/styleDefaultText"
+        android:id="@+id/updateText"
+        android:text="GAME"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

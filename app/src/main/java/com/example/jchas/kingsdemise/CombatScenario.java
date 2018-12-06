@@ -44,11 +44,14 @@ public class CombatScenario {
         switch (sceneNum){
 
             case 0:
-                enemy = new Player("Cowboys", 150, 150, 15);
+                enemy = new Player("Guards", 100, 100, 10);
                 break;
 
             case 1:
-                enemy = new Player("Guards", 200, 200, 30);
+                enemy = new Player("Policemen", 150, 150, 15);
+                break;
+            case 2:
+                enemy = new Player("King", 200, 200, 30);
                 break;
         }
     }
