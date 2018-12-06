@@ -37,9 +37,9 @@ ____________________
 `When a clue is found` 
 * Passing data back and forth between views 10 :heavy_check_mark:
 `the game object` 
-* Persistent data (read and write) 10 :anger:
+* Persistent data (read and write) 10 :heavy_check_mark:
 `the user's name is saved if they close the app`
-* New layout manager or GUI component 10 :anger:
+* New layout manager or GUI component 10 :heavy_check_mark:
 `status bar` 
 * Transitions 5 :heavy_check_mark:
 `NEEEEEEEEEEED` 
