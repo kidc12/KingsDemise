@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         start.startAnimation(hover);
 
         //this causes the app to crash and slow down if on a linux machine
-        //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
-        //mediaPlayer.start();
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.redbone);
+        mediaPlayer.start();
 
         /**
         credits.setOnClickListener(new View.OnClickListener() {
